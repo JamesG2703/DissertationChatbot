@@ -1,0 +1,888 @@
+version: "2.0"
+
+stories:
+
+- story: Bank Details Form
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: query_pay_bill
+  - action: account_number_login_pay_bill_form
+  - active_loop: account_number_login_pay_bill_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_query_pay_bill
+  - action: utter_query_pay_bill_options
+  - intent: action_pay_bill
+  - action: bank_details_form
+  - active_loop: bank_details_form
+  - slot_was_set:
+    - requested_slot: sort_code
+  - slot_was_set:
+    - sort_code: "789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_pay_bill_complete
+
+
+- story: Bill Query Path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: query_bill
+  - action: show_bill_form
+  - active_loop: show_bill_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_bill
+  - intent: show_bill
+  - action: utter_showbill
+  - action: utter_showbill_return_to_main_menu
+
+- story: Bill Query Path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: query_bill
+  - action: show_bill_form
+  - active_loop: show_bill_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_bill
+  - intent: greet
+  - action: utter_greet
+
+- story: Meter Readings Form
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: meter_reading
+  - action: meter_reading_form
+  - active_loop: meter_reading_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: meter_number
+  - slot_was_set:
+    - sort_code: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_meter_reading_showing
+
+- story: Cash Refund Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_refund
+  - action: account_number_login_refund_form
+  - active_loop: account_number_login_refund_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_refund_payment_options
+  - intent: refund_cash
+  - action: refund_cash_form
+  - active_loop: refund_cash_form
+  - slot_was_set:
+    - requested_slot: refund_cash_reciept_no
+  - slot_was_set:
+    - refund_cash_reciept_no: "123456789"
+  - slot_was_set:
+    - requested_slot: refund_cash_reciept_email
+  - slot_was_set:
+    - refund_cash_reciept_email: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: refund_cash_reciept_reason
+  - slot_was_set:
+    - refund_cash_reciept_reason: "I have been overcharged for a bill"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_cash_refund
+  - action: utter_cash_reciept_confirmation
+
+
+- story: Card Refund Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_refund
+  - action: account_number_login_refund_form
+  - active_loop: account_number_login_refund_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_refund_payment_options
+  - intent: refund_card
+  - action: refund_card_form
+  - active_loop: refund_card_form
+  - slot_was_set:
+    - requested_slot: refund_card_reciept_no
+  - slot_was_set:
+    - refund_card_reciept_no: "123456789"
+  - slot_was_set:
+    - requested_slot: refund_card_bank_no
+  - slot_was_set:
+    - refund_card_bank_no: "1234567890123456"
+  - slot_was_set:
+    - requested_slot: refund_card_sort_code_no
+  - slot_was_set:
+    - refund_card_sort_code_no: "123"
+  - slot_was_set:
+    - requested_slot: refund_card_reciept_email
+  - slot_was_set:
+    - refund_card_reciept_email: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: refund_card_reason
+  - slot_was_set:
+    - refund_card_reason: "I have been overcharged"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_card_refund
+  - action: utter_card_reciept_confirmation
+
+- story: Paypal Refund Story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_refund
+  - action: account_number_login_refund_form
+  - active_loop: account_number_login_refund_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_refund_payment_options
+  - intent: refund_paypal
+  - action: refund_paypal_form
+  - active_loop: refund_paypal_form
+  - slot_was_set:
+    - requested_slot: refund_paypal_reciept_no
+  - slot_was_set:
+    - refund_paypal_reciept_no: "123456789"
+  - slot_was_set:
+    - requested_slot: refund_paypal_card_bank_no
+  - slot_was_set:
+    - refund_paypal_card_bank_no: "1234567890123456"
+  - slot_was_set:
+    - requested_slot: refund_paypal_sort_code_no
+  - slot_was_set:
+    - refund_paypal_sort_code_no: "123"
+  - slot_was_set:
+    - requested_slot: refund_paypal_email
+  - slot_was_set:
+    - refund_paypal_email: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: refund_card_reason
+  - slot_was_set:
+    - refund_card_reason: "I have been overcharged"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_paypal_refund
+  - action: utter_paypal_reciept_confirmation
+
+
+# - story: Weather Path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: weather
+#   - action: utter_weather
+#   - intent: city
+#   - action: utter_temp
+
+
+- story: email query story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: send_email
+  - action: email_form
+  - active_loop: email_form
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - email: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: subject
+  - slot_was_set:
+    - subject: "I have been overcharged"
+  - slot_was_set:
+    - requested_slot: message
+  - slot_was_set: 
+    - message: "I have been overcharged"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_email_submit
+  - action: utter_email_submit_notification
+
+- story: sms query story
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: send_sms
+  - action: sms_details_form
+  - active_loop: sms_details_form
+  - slot_was_set:
+    - requested_slot: mobile_number
+  - slot_was_set:
+    - mobile_number: "+441234123456"
+  - slot_was_set:
+    - requested_slot: message_sms
+  - slot_was_set:
+    - message_sms: "I have a query"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit
+  - action: utter_phone_submit_notification
+
+- story: email signup story 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: email_signup
+  - action: email_details_form
+  - active_loop: email_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - name: "James Gwynn"
+  - slot_was_set:
+    - requested_slot: email_id
+  - slot_was_set:
+    - email_id: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_email
+  - action: utter_newsletter_submit_notification
+
+- story: Change email address form story (Password Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_email
+  - action: utter_email_change_options
+  - intent: access_password_email_change
+  - action: change_email_password_route_form
+  - active_loop: change_email_password_route_form
+  - slot_was_set:
+    - requested_slot: email_change_password
+  - slot_was_set:
+    - email_change_password: "Password"
+  - slot_was_set:
+    - requested_slot: old_email_password_change
+  - slot_was_set:
+    - old_email_password_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: new_email_password_change
+  - slot_was_set:
+    - new_email_password_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_email_password_route
+  - action: utter_email_change_password_notification
+
+- story: Change email address form story (Secret Question Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_email
+  - action: utter_email_change_options
+  - intent: access_secret_question_email_change
+  - action: change_email_secret_question_route_form
+  - active_loop: change_email_secret_question_route_form
+  - slot_was_set:
+    - requested_slot: email_change_secret_question
+  - slot_was_set:
+    - email_change_secret_question: "Secret Question"
+  - slot_was_set:
+    - requested_slot: old_email_secret_question_change
+  - slot_was_set:
+    - old_email_secret_question_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: new_email_secret_question_change
+  - slot_was_set:
+    - new_email_secret_question_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_email_secret_question_route
+  - action: utter_email_change_secret_question_notification
+
+- story: Change password form story (Password Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_password
+  - action: utter_password_change_options
+  - intent: access_password_password_change
+  - action: change_password_password_route_form
+  - active_loop: change_password_password_route_form
+  - slot_was_set:
+    - requested_slot: password_email_password_change
+  - slot_was_set:
+    - password_email_password_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: old_password_password_change
+  - slot_was_set:
+    - old_password_password_change: "password"
+  - slot_was_set:
+    - requested_slot: new_password_password_change
+  - slot_was_set:
+    - new_password_password_change: "password"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_password_password_route
+  - action: utter_password_change_password_notification
+
+- story: Change password form story (Secret Question Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_password
+  - action: utter_password_change_options
+  - intent: access_secret_question_password_change
+  - action: change_password_secret_question_route_form
+  - active_loop: change_password_secret_question_route_form
+  - slot_was_set:
+    - requested_slot: password_email_secret_question_change
+  - slot_was_set:
+    - password_email_secret_question_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: password_change_secret_question
+  - slot_was_set:
+    - password_change_secret_question: "secret question"
+  - slot_was_set:
+    - requested_slot: new_password_secret_question
+  - slot_was_set:
+    - new_password_secret_question: "password"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_password_secret_question_route
+  - action: utter_password_change_secret_question_notification
+
+- story: Change phone number form story (Password Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_phone_number
+  - action: utter_phone_number_change_options
+  - intent: access_password_phone_number_change
+  - action: change_phone_number_password_route_form
+  - active_loop: change_phone_number_password_route_form
+  - slot_was_set:
+    - requested_slot: phone_number_email_password_change
+  - slot_was_set:
+    - phone_number_email_password_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: phone_number_change_password
+  - slot_was_set:
+    - phone_number_change_password: "password"
+  - slot_was_set:
+    - requested_slot: old_mobile_number_password_change
+  - slot_was_set:
+    - old_mobile_number_password_change: "+441234123456"
+  - slot_was_set:
+    - requested_slot: new_mobile_number_password_change
+  - slot_was_set:
+    - new_mobile_number_password_change: "+441234123456"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_phone_number_password_route
+  - action: utter_phone_number_change_password_notification
+
+- story: Change phone number form story (Secret Question Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_phone_number
+  - action: utter_phone_number_change_options
+  - intent: access_secret_question_phone_number_change
+  - action: change_phone_number_secret_question_route_form
+  - active_loop: change_phone_number_secret_question_route_form
+  - slot_was_set:
+    - requested_slot: phone_number_email_secret_question_change
+  - slot_was_set:
+    - phone_number_email_secret_question_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: phone_number_change_secret_question
+  - slot_was_set:
+    - phone_number_change_secret_question: "secret question"
+  - slot_was_set:
+    - requested_slot: old_mobile_number_secret_question_change
+  - slot_was_set:
+    - old_mobile_number_secret_question_change: "+441234123456"
+  - slot_was_set:
+    - requested_slot: new_mobile_number_secret_question_change
+  - slot_was_set:
+    - new_mobile_number_secret_question_change: "+441234123456"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_change_phone_number_secret_password_route
+  - action: utter_phone_number_change_secret_question_notification
+
+- story: Change location form story (Password Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_location
+  - action: utter_location_change_options
+  - intent: access_password_location_change
+  - action: change_location_password_route_form
+  - active_loop: change_location_password_route_form
+  - slot_was_set:
+    - requested_slot: location_email_password_change
+  - slot_was_set:
+    - location_email_password_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: location_change_password
+  - slot_was_set:
+    - location_change_password: "password"
+  - slot_was_set:
+    - requested_slot: old_location_password_change
+  - slot_was_set:
+    - old_location_password_change: "location"
+  - slot_was_set:
+    - requested_slot: new_location_password_change
+  - slot_was_set:
+    - new_location_password_change: "location"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_location_slots_filled_password_route
+
+- story: Change location form story (Secret Question Route)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+  - slot_was_set:
+    - requested_slot: account_number_login
+  - slot_was_set:
+    - account_number_login: "123456789"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_account_management
+  - intent: change_location
+  - action: utter_location_change_options
+  - intent: access_secret_question_location_change
+  - action: change_location_secret_question_route_form
+  - active_loop: change_location_secret_question_route_form
+  - slot_was_set:
+    - requested_slot: location_email_secret_question_change
+  - slot_was_set:
+    - location_email_secret_question_change: "someone123@gmail.com"
+  - slot_was_set:
+    - requested_slot: location_change_secret_question
+  - slot_was_set:
+    - location_change_secret_question: "secret question"
+  - slot_was_set:
+    - requested_slot: old_location_secret_question_change
+  - slot_was_set:
+    - old_location_secret_question_change: "location"
+  - slot_was_set:
+    - requested_slot: new_location_secret_question_change
+  - slot_was_set:
+    - new_location_secret_question_change: "location"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_location_slots_filled_secret_question_route
+
+- story: Tariff FAQ Questions story (What is a tariff?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_what_is_a_tariff
+  - action: utter_what_is_a_tariff
+
+- story: Tariff FAQ Questions and Tariff Options story (What tariffs do you offer? + Fix 1 Year v14)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+  - intent: query_what_is_fix_1_year_v14
+  - action: utter_what_is_fix_1_year_v14
+
+- story: Tariff FAQ Questions and Tariff Options story (What tariffs do you offer? + Energyplan with smart pay as you go)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+  - intent: query_what_is_energyplan_with_smart_pay_as_you_go
+  - action: utter_what_is_energyplan_with_smart_pay_as_you_go
+
+- story: Tariff FAQ Questions and Tariff Options story (What tariffs do you offer? + E.ON energyplan with prepayment)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+  - intent: query_what_is_e.on_energyplan_with_prepayment
+  - action: utter_what_is_e.on_energyplan_with_prepayment
+
+- story: Tariff FAQ Questions and Tariff Options story (What tariffs do you offer? + E.ON energyplan)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+  - intent: query_e.on_energyplan
+  - action: utter_e.on_energyplan
+
+- story: Tariff FAQ Questions and Tariff Options story (What tariffs do you offer? + E.ON energyplan assist)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+  - intent: query_e.on_energyplan_assist
+  - action: utter_e.on_energyplan_assist
+
+- story: Tariff FAQ Questions story (How can I renew my tariff?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_renewal
+  - action: utter_tariff_renewal
+
+- story: Tariff FAQ Questions story (Why are the prices on the renewal tariff email or letter different to what is seen via my online account?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+  - intent: query_tariff_prices
+  - action: utter_tariff_prices
+
+- story: Meter FAQ Questions story (What is a meter?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_what_is_a_meter
+  - action: utter_what_is_a_meter
+
+- story: Meter FAQ Questions story (What meters do you offer + Digital meters)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_meter_options
+  - action: utter_meter_options
+  - intent: query_what_are_digital_meters
+  - action: utter_what_are_digital_meters
+
+- story: Meter FAQ Questions story (What meters do you offer + Dial meters)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_meter_options
+  - action: utter_meter_options
+  - intent: query_what_are_dial_meters
+  - action: utter_what_are_dial_meters
+
+- story: Meter FAQ Questions story (What meters do you offer + Mechanical meters)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_meter_options
+  - action: utter_meter_options
+  - intent: query_what_are_mechanical_meters
+  - action: utter_what_are_mechanical_meters
+
+- story: Meter FAQ Questions story (What meters do you offer + Smart meters)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_meter_options
+  - action: utter_meter_options
+  - intent: query_what_are_smart_meters
+  - action: utter_what_are_smart_meters
+
+- story: Meter FAQ Questions story (What does a meter typically tell me?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_what_does_a_meter_say
+  - action: utter_what_does_a_meter_say
+
+- story: Meter FAQ Questions story (Why am I having trouble giving you a meter reading?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+  - intent: query_trouble_giving_meter_reading
+  - action: utter_trouble_giving_meter_reading
+
+- story: Bill FAQ Questions story (Where is my bill?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_bills_questions
+  - action: utter_bills_questions
+  - intent: query_where_is_my_bill
+  - action: utter_where_is_my_bill
+
+- story: Bill FAQ Questions story (What do I do when my bill is incorrect?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_bills_questions
+  - action: utter_bills_questions
+  - intent: query_bill_is_incorrect
+  - action: utter_bill_is_incorrect
+
+- story: Bill FAQ Questions story (What do I do when I think I have overpaid a bill?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_bills_questions
+  - action: utter_bills_questions
+  - intent: query_bill_is_overpaid
+  - action: utter_bill_is_overpaid
+
+- story: Bill FAQ Questions story (Are you planning to add cryptocurrency as an acceptable currency for paying bills?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_bills_questions
+  - action: utter_bills_questions
+  - intent: query_cryptocurrency
+  - action: utter_cryptocurrency
+
+- story: Contact FAQ Questions story (What is your email address if I want to contact a human agent directly regarding a query?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_contact_questions
+  - action: utter_contact_questions
+  - intent: query_company_email_address
+  - action: utter_company_email_address
+
+- story: Contact FAQ Questions story (What is your phone number if I want to contact a human agent directly regarding a query?)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+  - intent: query_contact_questions
+  - action: utter_contact_questions
+  - intent: query_company_phone_number
+  - action: utter_company_phone_number
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: introduce
+#   - action: utter_introduce
+#   - intent: request_names
+#   - action: name_form
+#   - active_loop: name_form
+#   - slot_was_set:
+#     - requested_slot: first_name
+#   - slot_was_set:
+#     - first_name: vincent
+#   - slot_was_set:
+#     - requested_slot: last_name
+#   - slot_was_set:
+#     - last_name: vincent-mcvincent
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_submit
+#   - action: utter_slots_values
+
+
+# - story: ask time
+#   steps:
+#   - intent: ask_date
+#   - action: utter_date

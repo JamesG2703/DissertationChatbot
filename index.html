@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>!(function () {
+  let e = document.createElement("script"),
+    t = document.head || document.getElementsByTagName("head")[0];
+  (e.src =
+    "https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"),
+    // Replace 1.x.x with the version that you want
+    (e.async = !0),
+    (e.onload = () => {
+      window.WebChat.default(
+        {
+          selector: "#webchat",
+          initPayload: "/greet",
+          customData: {"language": "en"}, // arbitrary custom data. Stay minimal as this will be added to the socket
+          socketUrl: "https://7fd1-2a02-c7d-c62c-3100-8c30-191b-d911-4875.ngrok.io",
+          socketPath: "/socket.io/",
+          title: "Customer Service Chatbot",
+          subtitle: "Created using the rasa framework",
+          params: {"storage": "session"}
+        },
+        null
+      );
+    }),
+    t.insertBefore(e, t.firstChild);
+})();
+</script>
+</body>
+</html>

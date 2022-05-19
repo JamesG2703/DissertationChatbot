@@ -1,0 +1,1065 @@
+version: "2.0"
+
+intents:
+  - greet
+  - introduce
+  - goodbye
+  - affirm
+  - deny
+  # - mood_great
+  # - mood_unhappy
+  # - bot_challenge
+  - query_bill
+  - accountno_collection
+  - show_bill
+  - query_pay_bill
+  - accountno_collection_pay_bill
+  - action_pay_bill
+  - send_sort_code
+  - ask_refund
+  - refund_cash
+  - refund_card
+  - refund_paypal
+  - weather
+  - city
+  - action_weather_api
+  - meter_reading
+  # - meter_reading_accountno
+  # - show_updated_meter_reading
+  # - ask_date
+  - send_email
+  - send_sms
+  - email_signup
+  - email_id
+  - user_name
+  - account_management
+  - change_email
+  - change_password
+  - change_phone_number
+  - change_location
+  - access_password_email_change
+  - access_password_password_change
+  - access_password_phone_number_change
+  - access_password_location_change
+  - access_secret_question_email_change
+  - access_secret_question_password_change
+  - access_secret_question_phone_number_change
+  - access_secret_question_location_change
+  - frequently_asked_questions
+  - query_tariffs_questions
+  - query_meters_questions
+  - query_bills_questions
+  - query_contact_questions
+  - query_what_is_a_tariff
+  - query_tariff_options
+  - query_what_is_fix_1_year_v14
+  - query_what_is_energyplan_with_smart_pay_as_you_go
+  - query_what_is_e.on_energyplan_with_prepayment
+  - query_e.on_energyplan
+  - query_e.on_energyplan_assist
+  - query_tariff_renewal
+  - query_tariff_prices
+  - query_what_is_a_meter
+  - query_meter_options
+  - query_what_are_digital_meters
+  - query_what_are_dial_meters
+  - query_what_are_mechanical_meters
+  - query_what_are_smart_meters
+  - query_what_does_a_meter_say
+  - query_trouble_giving_meter_reading
+  - query_where_is_my_bill
+  - query_bill_is_incorrect
+  - query_bill_is_overpaid
+  - query_cryptocurrency
+  - query_company_email_address
+  - query_company_phone_number
+  - test
+  - request_names
+  # - knowledge_question
+
+entities:
+ - account_number
+ - account_number_login
+ - meter_number
+#  - reading_no
+#  - date
+
+slots:
+  account_number:
+    type: any
+  account_number_login:
+    type: any
+  subject:
+    type: text
+  mobile_number:
+    type: text
+  message:
+    type: text
+  message_sms:
+    type: text
+  name:
+    type: text
+    influence_conversation: true
+  email_id:
+    type: text
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
+  refund_cash_reciept_no:
+    type: text
+    influence_conversation: true
+  refund_cash_reciept_email:
+    type: text
+    influence_conversation: true
+  refund_cash_reciept_reason:
+    type: text
+    influence_conversation: true
+  refund_card_reciept_no:
+    type: text
+    influence_conversation: true
+  refund_card_bank_no:
+    type: text
+    influence_conversation: true
+  refund_card_sort_code_no:
+    type: text
+    influence_conversation: true
+  refund_card_reciept_email:
+    type: text
+    influence_conversation: true
+  refund_card_reason:
+    type: text
+    influence_conversation: true
+  refund_paypal_reciept_no:
+    type: text
+    influence_conversation: true
+  refund_paypal_card_bank_no:
+    type: text
+    influence_conversation: true
+  refund_paypal_sort_code_no:
+    type: text
+    influence_conversation: true
+  refund_paypal_email:
+    type: text
+    influence_conversation: true
+  refund_paypal_reason:
+    type: text
+    influence_conversation: true
+  sort_code:
+    type: text
+    influence_conversation: true
+  meter_number:
+    type: any
+  email_change_password:
+    type: text
+    influence_conversation: true
+  email_change_secret_question:
+    type: text
+    influence_conversation: true
+  old_email_password_change:
+    type: text
+    influence_conversation: true
+  old_email_secret_question_change:
+    type: text
+    influence_conversation: true
+  new_email_password_change:
+    type: text
+    influence_conversation: true
+  new_email_secret_question_change:
+    type: text
+    influence_conversation: true
+  password_email_password_change:
+    type: text
+    influence_conversation: true
+  old_password_password_change:
+    type: text
+    influence_conversation: true
+  new_password_password_change:
+    type: text
+    influence_conversation: true
+  password_email_secret_question_change:
+    type: text
+    influence_conversation: true
+  password_change_secret_question:
+    type: text
+    influence_conversation: true
+  new_password_secret_question:
+    type: text
+    influence_conversation: true
+  phone_number_email_password_change:
+    type: text
+    influence_conversation: true
+  phone_number_change_password:
+    type: text
+    influence_conversation: true
+  old_mobile_number_password_change:
+    type: text
+    influence_conversation: true
+  new_mobile_number_password_change:
+    type: text
+    influence_conversation: true
+  phone_number_email_secret_question_change:
+    type: text
+    influence_conversation: true
+  phone_number_change_secret_question:
+    type: text
+    influence_conversation: true
+  old_mobile_number_secret_question_change:
+    type: text
+    influence_conversation: true
+  new_mobile_number_secret_question_change:
+    type: text
+    influence_conversation: true
+  location_email_password_change:
+    type: text
+    influence_conversation: true
+  location_change_password:
+    type: text
+    influence_conversation: true
+  old_location_password_change:
+    type: text
+    influence_conversation: true
+  new_location_password_change:
+    type: text
+    influence_conversation: true
+  location_email_secret_question_change:
+    type: text
+    influence_conversation: true
+  location_change_secret_question:
+    type: text
+    influence_conversation: true
+  old_location_secret_question_change:
+    type: text
+    influence_conversation: true
+  new_location_secret_question_change:
+    type: text
+    influence_conversation: true
+  # date:
+  #   type: any
+  first_name:
+    type: text
+    influence_conversation: true
+  last_name:
+    type: text
+    influence_conversation: true
+
+responses:
+  # utter_greet:
+  # - text: "Hello, what is your account number?"
+
+  utter_greet:
+  - text: "Hello, how may I help you Today!"
+    buttons:
+    - title: "I've got a question about my gas bill"
+      payload: /query_bill
+    # - title: "I would like to know what the weather and temperature is like to estimate how much energy I need to use"
+    #   payload: /weather
+    - title: "I would like to update my meter reading"
+      payload: /meter_reading
+    - title: "I would like to pay my gas bill"
+      payload: /query_pay_bill
+    - title: "I would like a refund please"
+      payload: /ask_refund
+    - title: "I would like to send an enquiry by phone"
+      payload: /send_sms
+    - title: "I would like to send an enquiry by email"
+      payload: /send_email
+    - title: "I would like to sign up for your email newsletter"
+      payload: /email_signup
+    - title: "I would like to manage my account"
+      payload: /account_management
+    - title: "I would like to access the frequently asked questions (FAQ) section"
+      payload: /frequently_asked_questions
+    # - title: "I would like to test this chatbot"
+    #   payload: /test
+
+  # utter_cheer_up:
+  # - text: "Here is something to cheer you up:"
+  #   image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  # utter_did_that_help:
+  # - text: "Did that help you?"
+
+  # utter_happy:
+  # - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  # utter_iamabot:
+  # - text: "I am a bot, powered by Rasa."
+
+  utter_bill:
+  - text: "Ok customer {account_number_login}. Would you like an up to date gas bill?"
+    buttons:
+    - title: "Yes"
+      payload: /show_bill
+    - title: "No (Return me to main menu)"
+      payload: /greet
+
+  utter_showbill:
+  - text: "The most recent gas bill associated with customer number {account_number_login} is £168.33"
+  - text: "The most recent gas bill associated with customer number {account_number_login} is £240.68"
+  - text: "The most recent gas bill associated with customer number {account_number_login} is £334.65"
+
+  utter_showbill_return_to_main_menu:
+  - text: "Return to main menu?"
+    buttons:
+    - title: "Return to main menu"
+      payload: /greet
+
+  # utter_query_pay_bill:
+  # - text: "Ok, what is your 9 digit account number?"
+
+  utter_query_pay_bill:
+  - text: "Ok customer {account_number_login}, You have an outstanding gas bill of £168.33."
+  - text: "Ok customer {account_number_login}, You have an outstanding gas bill of £240.68."
+  - text: "Ok customer {account_number_login}, You have an outstanding gas bill of £334.65."
+
+  utter_query_pay_bill_options:
+  - text: "Would you like to pay the gas bill now?"
+    buttons:
+    - title: "Yes"
+      payload: /action_pay_bill
+    - title: "No (Return me to main menu)"
+      payload: /greet
+
+  utter_ask_sort_code:
+  - text: "What is your three digit sort code number, customer {account_number_login}?"
+
+  utter_pay_bill_complete:
+  - text: "Thank you for paying your gas bill!"
+    buttons:
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_ask_refund_payment_options:
+  - text: "What was your payment method, customer {account_number_login}?"
+    buttons:
+    - title: "Cash"
+      payload: /refund_cash
+    - title: "Debit card"
+      payload: /refund_card
+    - title: "Paypal"
+      payload: /refund_paypal
+
+  utter_ask_refund_cash_reciept_no:
+  - text: "What is your recent nine digit receipt number?"
+
+  utter_ask_refund_cash_reciept_email:
+  - text: "Please proide an email for us to notify you if you are legible for a refund and if you have recieved one."
+
+  utter_ask_refund_cash_reciept_reason:
+  - text: "What is the reason for your refund?"
+
+  utter_cash_reciept_confirmation:
+  - text: "We have now recieved your refund request with your payment method being cash and have sent you an email confirmation."
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_card_reciept_confirmation:
+  - text: "We have now recieved your refund request with your payment method being via bank card and have sent you an email confirmation."
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_paypal_reciept_confirmation:
+  - text: "We have now recieved your refund request with your payment method being paypal and have sent you an email confirmation."
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_refund_card_reciept_no:
+  - text: "What is your recent nine digit receipt number?"
+
+  utter_ask_refund_card_bank_no:
+  - text: "Please proide a nine digit bank card number"
+
+  utter_ask_refund_card_sort_code_no:
+  - text: "Please proide your three digit sort code number"
+
+  utter_ask_refund_card_reciept_email:
+  - text: "Please proide an email for us to notify you if you are legible for a refund and if you have recieved one."
+
+  utter_ask_refund_card_reason:
+  - text: "What is the reason for your refund?"
+
+  utter_ask_refund_paypal_reciept_no:
+  - text: "What is your recent nine digit receipt number?"
+
+  utter_ask_refund_paypal_card_bank_no:
+  - text: "Please proide a nine digit paypal bank card number."
+
+  utter_ask_refund_paypal_sort_code_no:
+  - text: "Please proide your three digit sort code number associated with your paypal account."
+
+  utter_ask_refund_paypal_email:
+  - text: "Please proide an email associated with your paypal for us to notify you if you are legible for a refund and if you have recieved one."
+
+  utter_ask_refund_paypal_reason:
+  - text: "What is the reason for your refund?"
+
+  utter_weather:
+  - text: "Which city/town do you currently live in?"
+
+  utter_temp:
+  - text: "Today's temperature is {temp} degree celcius."
+
+  utter_ask_account_number_login:
+  - text: "What is your nine digit account number?"
+
+  utter_ask_meter_number:
+  - text: "Ok customer {account_number_login}. What is your new meter reading?"
+
+  utter_meter_reading_showing:
+  - text: "Thank you customer {account_number_login}. For your updated meter reading number: {meter_number}"
+    buttons:
+    - title: "Return to main menu"
+      payload: /greet
+
+  # utter_date:
+  # - text: "It is {date}"
+
+  utter_ask_email:
+  - text: "Please provide an email for who you want to send an email to."
+
+  utter_ask_subject:
+  - text: "Please provide the subject for your email."
+
+  utter_ask_message:
+  - text: "Please provide the message for your email."
+
+  utter_email_submit_notification:
+  - text: "Your email query has now been submitted!"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_mobile_number:
+  - text: "Please provide the mobile number of whom you want to send a message to (Please type in the format from +44)?"
+
+  utter_ask_message_sms:
+  - text: "Please provide the message you want to send."
+
+  utter_phone_submit_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_name:
+  - text: Please enter your name.
+
+  utter_ask_email_id:
+  - text: Please enter your email to receive updates.
+
+  utter_newsletter_submit_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_account_management:
+  - text: What would you like to manage in your account, customer {account_number_login}?
+    buttons:
+    - title: "Change my email address"
+      payload: /change_email
+    - title: "Change my password"
+      payload: /change_password
+    - title: "Change my phone number"
+      payload: /change_phone_number
+    - title: "I'm moving home, change my location"
+      payload: /change_location
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_email_change_options:
+  - text: How would you like to change your email address?
+    buttons:
+    - title: "Via your password"
+      payload: /access_password_email_change
+    - title: "Via a secret question"
+      payload: /access_secret_question_email_change
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_password_change_options:
+  - text: How would you like to change your password?
+    buttons:
+    - title: "Via your old password"
+      payload: /access_password_password_change
+    - title: "Via a secret question"
+      payload: /access_secret_question_password_change
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_phone_number_change_options:
+  - text: How would you like to change your phone number?
+    buttons:
+    - title: "Via your password"
+      payload: /access_password_phone_number_change
+    - title: "Via a secret question"
+      payload: /access_secret_question_phone_number_change
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_location_change_options:
+  - text: How would you like to change your location?
+    buttons:
+    - title: "Via your password"
+      payload: /access_password_location_change
+    - title: "Via a secret question"
+      payload: /access_secret_question_location_change
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_ask_email_change_password:
+  - text: What is your password?
+
+  utter_ask_email_change_secret_question:
+  - text: What is your pet's name?
+  - text: What was the name of your first school?
+  - text: What is the name of the town/city you were born in?
+
+  utter_ask_old_email_password_change:
+  - text: What is your current email address?
+
+  utter_ask_old_email_secret_question_change:
+  - text: What is your current email address?
+
+  utter_ask_new_email_password_change:
+  - text: What is your new email address?
+
+  utter_email_change_password_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_new_email_secret_question_change:
+  - text: What is your new email address?
+
+  utter_email_change_secret_question_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_password_email_password_change:
+  - text: What is your email address?
+
+  utter_ask_old_password_password_change:
+  - text: What is your old password?
+
+  utter_ask_new_password_password_change:
+  - text: What is your chosen new password?
+
+  utter_ask_password_email_secret_question_change:
+  - text: What is your email address?
+
+  utter_password_change_password_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_password_change_secret_question:
+  - text: What is your mother's maiden name?
+  - text: What is your favourite food?
+  - text: What is your favourite holiday destination?
+
+  utter_ask_new_password_secret_question:
+  - text: What is your chosen new password?
+
+  utter_password_change_secret_question_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_phone_number_email_password_change:
+  - text: What is your email address?
+
+  utter_ask_phone_number_change_password:
+  - text: What is your password?
+
+  utter_ask_old_mobile_number_password_change:
+  - text: What is your current mobile number (Please type in the format from +44)?
+
+  utter_ask_new_mobile_number_password_change:
+  - text: What is your new mobile number (Please type in the format from +44)?
+
+  utter_phone_number_change_password_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_phone_number_email_secret_question_change:
+  - text: What is your email address?
+
+  utter_ask_phone_number_change_secret_question:
+  - text: What is your favourite resturant?
+  - text: What is your favourite video game console?
+  - text: What brand is your car?
+  
+  utter_ask_old_mobile_number_secret_question_change:
+  - text: What is your current mobile number (Please type in the format from +44)?
+
+  utter_ask_new_mobile_number_secret_question_change:
+  - text: What is your new mobile number (Please type in the format from +44)?
+
+  utter_phone_number_change_secret_question_notification:
+  - text: "Would you like to return back to main menu?"
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_ask_location_email_password_change:
+  - text: What is your email address?
+
+  utter_ask_location_email_secret_question_change:
+  - text: What is your email address?
+
+  utter_ask_location_change_password:
+  - text: What is your password?
+
+  utter_ask_location_change_secret_question:
+  - text: What is your preferred operating system?
+  - text: What is the name of the brand of your tv?
+  - text: What is your local supermarket?
+
+  utter_ask_old_location_password_change:
+  - text: What is your current/old location?
+
+  utter_ask_new_location_password_change:
+  - text: What is your new location?
+
+  utter_ask_old_location_secret_question_change:
+  - text: What is your current/old location?
+
+  utter_ask_new_location_secret_question_change:
+  - text: What is your new location?
+
+  utter_location_slots_filled_password_route:
+  - text: You have now changed your location form {old_location_password_change} to {new_location_password_change} with the use of your password!
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_location_slots_filled_secret_question_route:
+  - text: You have now changed your location form {old_location_secret_question_change} to {new_location_secret_question_change} with the use of your secret question!
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_frequently_asked_questions:
+  - text: "Welcome to the frequently asked questions section. How may I help you today?"
+    buttons:
+    - title: "Tariff Questions"
+      payload: /query_tariffs_questions
+    - title: "Meter Questions"
+      payload: /query_meters_questions
+    - title: "Bill Questions"
+      payload: /query_bills_questions
+    - title: "Contact Method Questions"
+      payload: /query_contact_questions
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_tariffs_questions:
+  - text: "What question do you have regarding tariffs?"
+    buttons:
+    - title: "What is a tariff?"
+      payload: /query_what_is_a_tariff
+    - title: "What tariffs do you offer?"
+      payload: /query_tariff_options
+    - title: "How can I renew my tariff?"
+      payload: /query_tariff_renewal
+    - title: "Why are the prices on the renewal tariff email or letter different to what is seen via my online account?"
+      payload: /query_tariff_prices
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_what_is_a_tariff:
+  - text: An energy tariff is a plan of how we will charge you for energy. There are two different types of tariffs, one being a fixed rate one where the cost of energy is set for a certain amount of time it is being utilised. A variable tariff can put the price of energy up or down depending on market shares going up or down.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_tariff_options:
+  - text: "Here are our tariff options, please select which one you would like to know more about?"
+    buttons:
+    - title: Fix 1 Year v14
+      payload: /query_what_is_fix_1_year_v14
+    - title: EnergyPlan with Smart Pay As You Go
+      payload: /query_what_is_energyplan_with_smart_pay_as_you_go
+    - title: E.ON EnergyPlan with Prepayment
+      payload: /query_what_is_e.on_energyplan_with_prepayment
+    - title: E.ON EnergyPlan
+      payload: /query_e.on_energyplan
+    - title: E.ON EnergyPlan Assist
+      payload: /query_e.on_energyplan_assist
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_what_is_fix_1_year_v14:
+  - text: Energy prices are fixed monthly since the tariff start date for a 12 month period. There is no fee to exit this tariff.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_is_energyplan_with_smart_pay_as_you_go:
+  - text: Energy prices are variable monthly with no contract end date. There is no fee to exit this tariff and can be available as an electricity only, gas only or a dual fuel tariff.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_is_e.on_energyplan_with_prepayment:
+  - text: Energy prices are variable monthly with no contract end date. There is no fee to exit this tariff and can be available as an electricity only, gas only or a dual fuel tariff. This can only be accessed as a prepayment option where bills are paid in advance.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_e.on_energyplan:
+  - text: Energy prices are variable monthly with no contract end date. There is no fee to exit this tariff and can be available as an electricity only, gas only or a dual fuel tariff. If you pay your bills via direct debit then discounts can be applicable occassionally.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_e.on_energyplan_assist:
+  - text: Energy prices are variable monthly with no contract end date. There is no fee to exit this tariff and can be available as an electricity only, gas only or a dual fuel tariff. If you pay your bills via direct debit then discounts can be applicable occassionally. This option is only available if you've had a warm home discount between October 2016 and March 2019
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_tariff_renewal:
+  - text: To renew your tariff you can do it via your online account and select from a variety of tariffs which one you would like to renew to.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_tariff_prices:
+  - text: At times your electricity and gas may be on different tariffs to each other with different end dates. Keep in mind, our system may be under maintenance at times which may result in inaccurate results.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_meters_questions:
+  - text: "What question do you have regarding meters, customer?"
+    buttons:
+    - title: "What is a meter?"
+      payload: /query_what_is_a_meter
+    - title: "What meters do you offer?"
+      payload: /query_meter_options
+    - title: "What does a meter typically tell me?"
+      payload: /query_what_does_a_meter_say
+    - title: "Why am I having trouble giving you a meter reading?"
+      payload: /query_trouble_giving_meter_reading
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_what_is_a_meter:
+  - text: An energy meter is an electrical measuring device used to record electricity used over a certain period of time and is measured in units.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_meter_options:
+  - text: "Here are our meter options, please select which one you would like to know more about?"
+    buttons:
+    - title: "Digital meters"
+      payload: /query_what_are_digital_meters
+    - title: "Dial meters"
+      payload: /query_what_are_dial_meters
+    - title: "Mechanical meters"
+      payload: /query_what_are_mechanical_meters
+    - title: "Smart meters"
+      payload: /query_what_are_smart_meters
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_what_are_digital_meters:
+  - text: A meter with a digital display screen that show the amount of energy used per day.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_are_dial_meters:
+  - text: A clock-style dial meter that show the amount of energy being used per day.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_are_mechanical_meters:
+  - text: A meter with rotating counters that show the numbers on the display.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_are_smart_meters:
+  - text: A meter with an LED screen that records the energy being used in your entire household. They can be protable and placed anwhere in the home.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_what_does_a_meter_say:
+  - text: A meter can tell you how much energy you are using. In particular smart meters can tell you how much gas and electirity that you are using.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_trouble_giving_meter_reading:
+  - text: Sometimes an IT issue can occur when you are unable to give your meter reading. We have occassional maintenance to our website as well which might make the website not functional to use.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_bills_questions:
+  - text: "What question do you have regarding bills?"
+    buttons:
+    - title: "Where is my bill?"
+      payload: /query_where_is_my_bill
+    - title: "What do I do when my bill is incorrect?"
+      payload: /query_bill_is_incorrect
+    - title: "What do I do when I think I have overpaid a bill?"
+      payload: /query_bill_is_overpaid
+    - title: "Are you planning to add cryptocurrency as an acceptable currency for paying bills?"
+      payload: /query_cryptocurrency
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_where_is_my_bill:
+  - text: Your bill can be accessed via your online account which records up to two years worth of bills addressed to you. You can also find bills that we have mailed to you personally.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_bill_is_incorrect: 
+  - text: If possible, please update your current meter reading so that we can give you a more up to date bill. Otherwise please contact us via email or phone and we will get it sorted.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_bill_is_overpaid:
+  - text: Please contact us immediately and we will be able review your previous payment and see if you are eligible for a refund. You must then pay the correct amount after we have refunded you in at least 20 days.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_cryptocurrency:
+  - text: Currently we are not planning to add cryptocurrency as a legitimate payment method due to how much its value varies. However we are considering it for potential future payment options.
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_contact_questions:
+  - text: "What question do you have regarding our contact options?"
+    buttons:
+    - title: "What is your email address if I want to contact a human agent directly regarding a query?"
+      payload: /query_company_email_address
+    - title: "What is your phone number if I want to contact a human agent directly regarding a query?"
+      payload: /query_company_phone_number
+    - title: "Return to main menu"
+      payload: /greet
+
+  utter_company_email_address:
+  - text: You can contact E.ON directly via this email address - email.queries@eonenergy.com
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_company_phone_number:
+  - text: You can contact E.ON directly via this phone number - 0345 052 0000
+    buttons:
+    - title: "Return me to main menu"
+      payload: /greet
+
+  utter_test:
+  - text: "This is a test for chatbot response!"
+  
+  utter_ask_first_name:
+  - text: What is your first name?
+  utter_ask_last_name:
+  - text: What is your second name?
+  utter_submit:
+  - text: Ok. Thanks!
+  utter_slots_values:
+  - text: I will remember that your name is {first_name} {last_name}!
+
+actions:
+  - action_submit
+  - action_email
+  - action_email_submit
+  - utter_greet
+  # - utter_introduce
+  - utter_bill
+  - utter_slots_values
+  - utter_submit
+  - utter_pay_bill_complete
+  - utter_meter_reading_showing
+  - action_cash_refund
+  - utter_cash_reciept_confirmation
+  - action_card_refund
+  - utter_card_reciept_confirmation
+  - action_paypal_refund
+  - action_change_email_password_route
+  - action_change_email_secret_question_route
+  - action_change_password_password_route
+  - action_change_password_secret_question_route
+  - access_password_phone_number_change
+  - access_secret_question_phone_number_change
+  - action_change_phone_number_password_route
+  - action_change_phone_number_secret_password_route
+  - utter_location_slots_filled_password_route
+  - utter_location_slots_filled_secret_question_route
+  # - call_haystack
+
+forms:
+  # account_number_form:
+  #   account_number:
+  #   - type: from_text
+  account_number_login_pay_bill_form:
+    account_number_login:
+    - type: from_text
+  account_number_login_refund_form:
+    account_number_login:
+    - type: from_text
+  show_bill_form:
+    account_number_login:
+    - type: from_text
+  bank_details_form:
+    account_number_login:
+    - type: from_text
+    sort_code:
+    - type: from_text
+  meter_reading_form:
+    account_number_login:
+    - type: from_text
+    meter_number:
+    - type: from_text
+  refund_cash_form:
+    refund_cash_reciept_no:
+    - type: from_text
+    refund_cash_reciept_email:
+    - type: from_text
+    refund_cash_reciept_reason:
+    - type: from_text
+  refund_card_form:
+    refund_card_reciept_no:
+    - type: from_text
+    refund_card_bank_no:
+    - type: from_text
+    refund_card_sort_code_no:
+    - type: from_text
+    refund_card_reciept_email:
+    - type: from_text
+    refund_card_reason:
+    - type: from_text
+  refund_paypal_form:
+    refund_paypal_reciept_no:
+    - type: from_text
+    refund_paypal_card_bank_no:
+    - type: from_text
+    refund_paypal_sort_code_no:
+    - type: from_text
+    refund_paypal_email:
+    - type: from_text
+    refund_paypal_reason:
+    - type: from_text
+  email_form:
+    email:
+    - type: from_text
+    subject:
+    - type: from_text
+    message:
+    - type: from_text
+  sms_details_form:
+    mobile_number:
+    - type: from_text
+    message_sms:
+    - type: from_text
+  email_details_form:
+    name:
+    - type: from_text
+    email_id:
+    - type: from_text
+  account_number_login_account_management_form:
+    account_number_login:
+    - type: from_text
+  change_email_password_route_form:
+    email_change_password:
+    - type: from_text
+    old_email_password_change:
+    - type: from_text
+    new_email_password_change:
+    - type: from_text
+  change_email_secret_question_route_form:
+    email_change_secret_question:
+    - type: from_text
+    old_email_secret_question_change:
+    - type: from_text
+    new_email_secret_question_change:
+    - type: from_text
+  change_password_password_route_form:
+    password_email_password_change:
+    - type: from_text
+    old_password_password_change:
+    - type: from_text
+    new_password_password_change:
+    - type: from_text
+  change_password_secret_question_route_form:
+    password_email_secret_question_change:
+    - type: from_text
+    password_change_secret_question:
+    - type: from_text
+    new_password_secret_question:
+    - type: from_text
+  change_phone_number_password_route_form:
+    phone_number_email_password_change:
+    - type: from_text
+    phone_number_change_password:
+    - type: from_text
+    old_mobile_number_password_change:
+    - type: from_text
+    new_mobile_number_password_change:
+    - type: from_text
+  change_phone_number_secret_question_route_form:
+    phone_number_email_secret_question_change:
+    - type: from_text
+    phone_number_change_secret_question:
+    - type: from_text
+    old_mobile_number_secret_question_change:
+    - type: from_text
+    new_mobile_number_secret_question_change:
+    - type: from_text
+  change_location_password_route_form:
+    location_email_password_change:
+    - type: from_text
+    location_change_password:
+    - type: from_text
+    old_location_password_change:
+    - type: from_text
+    new_location_password_change:
+    - type: from_text
+  change_location_secret_question_route_form:
+    location_email_secret_question_change:
+    - type: from_text
+    location_change_secret_question:
+    - type: from_text
+    old_location_secret_question_change:
+    - type: from_text
+    new_location_secret_question_change:
+    - type: from_text
+  # name_form:
+  #   first_name:
+  #   - type: from_text
+  #   last_name:
+  #   - type: from_text
+
+e2e_actions: []
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

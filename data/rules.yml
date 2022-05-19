@@ -1,0 +1,553 @@
+version: "2.0"
+
+rules:
+
+- rule: Bot to introduce itself anytime the user says hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Activate form show bill
+  steps:
+  - intent: query_bill
+  - action: show_bill_form
+  - active_loop: show_bill_form
+
+- rule: Submit form show bill
+  condition:
+  - active_loop: show_bill_form
+  steps:
+  - action: show_bill_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_bill
+
+- rule: Respond when the user wants to see their most recent bill
+  steps:
+  - intent: show_bill
+  - action: utter_showbill
+  - action: utter_showbill_return_to_main_menu
+
+- rule: Activate account login pay bill form
+  steps:
+  - intent: query_pay_bill
+  - action: account_number_login_pay_bill_form
+  - active_loop: account_number_login_pay_bill_form
+
+- rule: Submit account login pay bill form
+  condition:
+  - active_loop: account_number_login_pay_bill_form
+  steps:
+  - action: account_number_login_pay_bill_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_query_pay_bill
+  - action: utter_query_pay_bill_options
+
+# - rule: Respond when the user wants to pay their bill
+#   steps:
+#   - intent: query_pay_bill
+#   - action: utter_query_pay_bill
+
+- rule: Activate form bank details
+  steps:
+  - intent: action_pay_bill
+  - action: bank_details_form
+  - active_loop: bank_details_form
+
+- rule: Submit form bank details
+  condition:
+  - active_loop: bank_details_form
+  steps:
+  - action: bank_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_pay_bill_complete
+
+- rule: Activate form account number login (Refund Query)
+  steps:
+  - intent: ask_refund
+  - action: account_number_login_refund_form
+  - active_loop: account_number_login_refund_form
+
+- rule: Submit form account number login (Refund Query)
+  condition:
+  - active_loop: account_number_login_refund_form
+  steps:
+  - action: account_number_login_refund_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_ask_refund_payment_options
+
+- rule: Activate cash refund form
+  steps:
+  - intent: refund_cash
+  - action: refund_cash_form
+  - active_loop: refund_cash_form
+
+- rule: Submit cash refund form
+  condition:
+  - active_loop: refund_cash_form
+  steps:
+  - action: refund_cash_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_cash_refund
+  - action: utter_cash_reciept_confirmation
+
+- rule: Activate card refund form
+  steps:
+  - intent: refund_card
+  - action: refund_card_form
+  - active_loop: refund_card_form
+
+- rule: Submit card refund form
+  condition:
+  - active_loop: refund_card_form
+  steps:
+  - action: refund_card_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_card_refund
+  - action: utter_card_reciept_confirmation
+
+- rule: Activate paypal refund form
+  steps:
+  - intent: refund_paypal
+  - action: refund_paypal_form
+  - active_loop: refund_paypal_form
+
+- rule: Submit paypal refund form
+  condition:
+  - active_loop: refund_paypal_form
+  steps:
+  - action: refund_paypal_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_paypal_refund
+  - action: utter_paypal_reciept_confirmation
+
+- rule: Respond when the user wants to know the weather
+  steps:
+  - intent: weather
+  - action: utter_weather
+
+- rule: Respond when the user wants to input their town/city for the weather
+  steps:
+  - intent: city
+  - action: utter_temp
+
+- rule: Activate form meter readings
+  steps:
+  - intent: meter_reading
+  - action: meter_reading_form
+  - active_loop: meter_reading_form
+
+- rule: Submit form meter readings
+  condition:
+  - active_loop: meter_reading_form
+  steps:
+  - action: meter_reading_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_meter_reading_showing
+
+# - rule: Respond when the user wants to check the time
+#   steps:
+#   - intent: ask_date
+#   - action: utter_date
+
+- rule: Form Action
+  steps:
+    - intent: send_email
+    - action: email_form
+    - active_loop: email_form
+
+- rule: Submit form
+  condition:
+  # Condition that the form is active
+  - active_loop: email_form
+  steps:
+  # Form is deactivated
+  - action: email_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted
+  - action: action_email_submit
+  - action: utter_email_submit_notification
+
+- rule: Form activate sms
+  steps:
+  - intent: send_sms
+  - action: sms_details_form
+  - active_loop: sms_details_form
+
+- rule: Submit form sms
+  condition:
+  # Condition that form is active.
+  - active_loop: sms_details_form
+  steps:
+  # Form is deactivated
+  - action: sms_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit
+  - action: utter_phone_submit_notification
+
+- rule: Form activate email
+  steps:
+  - intent: email_signup
+  - action: email_details_form
+  - active_loop: email_details_form
+
+- rule: Submit form email
+  condition:
+  - active_loop: email_details_form
+  steps:
+  - action: email_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_email
+  - action: utter_newsletter_submit_notification
+
+- rule: Activate form account number login (Account Management Query)
+  steps:
+  - intent: account_management
+  - action: account_number_login_account_management_form
+  - active_loop: account_number_login_account_management_form
+
+- rule: Submit form account number login (Account Management Query)
+  condition:
+  - active_loop: account_number_login_account_management_form
+  steps:
+  - action: account_number_login_account_management_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_account_management
+
+- rule: Let the user change their email address for their account
+  steps:
+  - intent: change_email
+  - action: utter_email_change_options
+
+- rule: Let the user change their password for their account
+  steps:
+  - intent: change_password
+  - action: utter_password_change_options
+
+- rule: Let the user change their phone number for their account
+  steps:
+  - intent: change_phone_number
+  - action: utter_phone_number_change_options
+
+- rule: Let the user change their phone number for their account
+  steps:
+  - intent: change_location
+  - action: utter_location_change_options
+
+- rule: Activate change email form (Password Route)
+  steps:
+  - intent: access_password_email_change
+  - action: change_email_password_route_form
+  - active_loop: change_email_password_route_form
+
+- rule: Activate change password form (Password Route)
+  steps:
+  - intent: access_password_password_change
+  - action: change_password_password_route_form
+  - active_loop: change_password_password_route_form
+
+- rule: Activate change phone number form (Password Route)
+  steps:
+  - intent: access_password_phone_number_change
+  - action: change_phone_number_password_route_form
+  - active_loop: change_phone_number_password_route_form
+
+- rule: Activate change phone number form (Secret Question Route)
+  steps:
+  - intent: access_secret_question_phone_number_change
+  - action: change_phone_number_secret_question_route_form
+  - active_loop: change_phone_number_secret_question_route_form
+
+- rule: Activate change location form (Password Route)
+  steps:
+  - intent: access_password_location_change
+  - action: change_location_password_route_form
+  - active_loop: change_location_password_route_form
+
+- rule: Activate change location form (Secret Question Route)
+  steps:
+  - intent: access_secret_question_location_change
+  - action: change_location_secret_question_route_form
+  - active_loop: change_location_secret_question_route_form
+
+- rule: Submit change location form (Password Route)
+  condition:
+  - active_loop: change_location_password_route_form
+  steps:
+  - action: change_location_password_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_location_slots_filled_password_route
+
+- rule: Submit change location form (Secret Question Route)
+  condition:
+  - active_loop: change_location_secret_question_route_form
+  steps:
+  - action: change_location_secret_question_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_location_slots_filled_secret_question_route
+
+- rule: Submit change email form (Password Route)
+  condition:
+  - active_loop: change_email_password_route_form
+  steps:
+  - action: change_email_password_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_email_password_route
+  - action: utter_email_change_password_notification
+
+- rule: Submit change password form (Password Route)
+  condition:
+  - active_loop: change_password_password_route_form
+  steps:
+  - action: change_password_password_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_password_password_route
+  - action: utter_password_change_password_notification
+
+- rule: Submit change phone number form (Password Route)
+  condition:
+  - active_loop: change_phone_number_password_route_form
+  steps:
+  - action: change_phone_number_password_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_phone_number_password_route
+  - action: utter_phone_number_change_password_notification
+
+- rule: Submit change phone number form (Secret Password Route)
+  condition:
+  - active_loop: change_phone_number_secret_question_route_form
+  steps:
+  - action: change_phone_number_secret_question_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_phone_number_secret_password_route
+  - action: utter_phone_number_change_secret_question_notification
+
+- rule: Activate change email form (Secret Question Route)
+  steps:
+  - intent: access_secret_question_email_change
+  - action: change_email_secret_question_route_form
+  - active_loop: change_email_secret_question_route_form
+
+- rule: Submit change email form (Secret Question Route)
+  condition:
+  - active_loop: change_email_secret_question_route_form
+  steps:
+  - action: change_email_secret_question_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_email_secret_question_route
+  - action: utter_email_change_secret_question_notification
+
+- rule: Activate change password form (Secret Question Route)
+  steps:
+  - intent: access_secret_question_password_change
+  - action: change_password_secret_question_route_form
+  - active_loop: change_password_secret_question_route_form
+
+- rule: Submit change password form (Secret Question Route)
+  condition:
+  - active_loop: change_password_secret_question_route_form
+  steps:
+  - action: change_password_secret_question_route_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_change_password_secret_question_route
+  - action: utter_password_change_secret_question_notification
+
+- rule: Respond when the user wants to access FAQ
+  steps:
+  - intent: frequently_asked_questions
+  - action: utter_frequently_asked_questions
+
+- rule: Respond when the user wants to access tariffs FAQ questions
+  steps:
+  - intent: query_tariffs_questions
+  - action: utter_tariffs_questions
+
+- rule: Respond when the user wants to know what is a tariff in tariff FAQ questions
+  steps:
+  - intent: query_what_is_a_tariff
+  - action: utter_what_is_a_tariff
+
+- rule: Respond when the user wants to know what tariff options in tariff FAQ questions
+  steps:
+  - intent: query_tariff_options
+  - action: utter_tariff_options
+
+- rule: Respond when the user wants to know what a fixed year 1 tariff is in tariff options
+  steps:
+  - intent: query_what_is_fix_1_year_v14
+  - action: utter_what_is_fix_1_year_v14
+
+- rule: Respond when the user wants to know what an energyplan with smart pay as you go tariff is in tariff options
+  steps:
+  - intent: query_what_is_energyplan_with_smart_pay_as_you_go
+  - action: utter_what_is_energyplan_with_smart_pay_as_you_go
+
+- rule: Respond when the user wants to know what an e.on energyplan with prepayment tariff is in tariff options
+  steps:
+  - intent: query_what_is_e.on_energyplan_with_prepayment
+  - action: utter_what_is_e.on_energyplan_with_prepayment
+
+- rule: Respond when the user wants to know what an e.on energyplan tariff is in tariff options
+  steps:
+  - intent: query_e.on_energyplan
+  - action: utter_e.on_energyplan
+
+- rule: Respond when the user wants to know what an e.on energyplan assist tariff is in tariff options
+  steps:
+  - intent: query_e.on_energyplan_assist
+  - action: utter_e.on_energyplan_assist
+
+- rule: Respond when the user wants to know about tariff renewal in tariff FAQ questions
+  steps:
+  - intent: query_tariff_renewal
+  - action: utter_tariff_renewal
+
+- rule: Respond when the user wants to know about a renewal tariff price difference online and in email/letter in tariff FAQ questions
+  steps:
+  - intent: query_tariff_prices
+  - action: utter_tariff_prices
+
+- rule: Respond when the user wants to access meters FAQ questions
+  steps:
+  - intent: query_meters_questions
+  - action: utter_meters_questions
+
+- rule: Respond when the user wants to know what is a meter in meters FAQ questions
+  steps:
+  - intent: query_what_is_a_meter
+  - action: utter_what_is_a_meter
+
+- rule: Respond when the user wants to know meter options in meters FAQ questions
+  steps:
+  - intent: query_meter_options
+  - action: utter_meter_options
+
+- rule: Respond when the user wants to know what digital meters are in meter options
+  steps:
+  - intent: query_what_are_digital_meters
+  - action: utter_what_are_digital_meters
+
+- rule: Respond when the user wants to know what dial meters are in meter options
+  steps:
+  - intent: query_what_are_dial_meters
+  - action: utter_what_are_dial_meters
+
+- rule: Respond when the user wants to know what mechanical meters are in meter options
+  steps:
+  - intent: query_what_are_mechanical_meters
+  - action: utter_what_are_mechanical_meters
+
+- rule: Respond when the user wants to know what smart meters are in meter options
+  steps:
+  - intent: query_what_are_smart_meters
+  - action: utter_what_are_smart_meters
+
+- rule: Respond when the user wants to know what a meter says in meters FAQ questions
+  steps:
+  - intent: query_what_does_a_meter_say
+  - action: utter_what_does_a_meter_say
+
+- rule: Respond when the user is having toruble giving a meter reading in meters FAQ questions
+  steps:
+  - intent: query_trouble_giving_meter_reading
+  - action: utter_trouble_giving_meter_reading
+
+- rule: Respond when the user wants to access bills FAQ questions
+  steps:
+  - intent: query_bills_questions
+  - action: utter_bills_questions
+
+- rule: Respond when the user wants to know where there bill is in bills FAQ questions
+  steps:
+  - intent: query_where_is_my_bill
+  - action: utter_where_is_my_bill
+
+- rule: Respond when the user thinks their bill is incorrect in bills FAQ questions
+  steps:
+  - intent: query_bill_is_incorrect
+  - action: utter_bill_is_incorrect
+
+- rule: Respond when the user thinks their bill is overpaid in bills FAQ questions
+  steps:
+  - intent: query_bill_is_overpaid
+  - action: utter_bill_is_overpaid
+
+- rule: Respond when the user wants to know if cryptocurrency will be added as a payment method for bills in bills FAQ questions
+  steps:
+  - intent: query_cryptocurrency
+  - action: utter_cryptocurrency
+
+- rule: Respond when the user wants to access contacts FAQ questions
+  steps:
+  - intent: query_contact_questions
+  - action: utter_contact_questions
+
+- rule: Respond when the user wants to know e.on's email address in contacts FAQ questions
+  steps:
+  - intent: query_company_email_address
+  - action: utter_company_email_address
+
+- rule: Respond when the user wants to know e.on's phone number in contacts FAQ questions
+  steps:
+  - intent: query_company_phone_number
+  - action: utter_company_phone_number
+
+- rule: Respond when the user wants to test the reponsiveness of the chatbot
+  steps:
+  - intent: test
+  - action: utter_test
+
+# - rule: Query Haystack anytime the user has a direct question for your document base
+#   steps:
+#   - intent: knowledge_question
+#   - action: call_haystack
+
+# - rule: Query Haystack whenever they send a message with low NLU confidence
+#   steps:
+#     - intent: nlu_fallback
+#     - action: call_haystack

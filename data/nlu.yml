@@ -1,0 +1,417 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - main menu
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - ciao
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: query_bill
+  examples: |
+    - bill
+    - I have a question regarding my bill
+
+- intent: show_bill
+  examples: |
+    - Yes what is my bill
+    - Yes please
+
+- intent: weather
+  examples: |
+    - what's the weather
+    - i want to know the weather of today
+    - tell me the weather forcast
+    - hows the weather today
+
+- intent: city
+  examples: |
+    - Delhi
+    - delhi
+    - chandigarh
+    - mohali
+    - mumbai
+    - jaipur
+
+- intent: meter_reading
+  examples: |
+    - I would like to give my meter reading
+    - I want to give my meter reading
+
+- intent: query_pay_bill
+  examples: |
+    - I want to pay a bill
+    - Pay bill
+    - bill
+    - show me my bill
+    - pay a bill
+    - please pay bill
+
+- intent: action_pay_bill
+  examples: |
+    - Yes, I want to pay my bill
+    - Pay my bill now
+
+- intent: ask_refund
+  examples: |
+    - I want a refund
+    - Refund
+    - Give me a refund
+    - I want my money back
+
+- intent: refund_cash
+  examples: |
+    - cash
+    - refund cash
+
+- intent: refund_card
+  examples: |
+    - card
+    - refund card
+
+- intent: refund_paypal
+  examples: |
+    - paypal
+    - refund paypal
+
+- intent: send_email
+  examples: |
+    - I want to send an email
+    - Send an email
+    - Send email
+    - email
+
+- intent: send_sms
+  examples: |
+    - I want to send sms
+    - i would like to send message
+    - send msg
+    - i want to send text message
+
+- intent: email_signup
+  examples: |
+    - Sign up
+    - Sign me up
+
+- intent: email_id
+  examples: |
+    - [abc@gmail.com](email)
+    - [abc@yourdomain](email)
+    - @gmail.com
+    - [xyz@gmail.com](email)
+
+- intent: user_name
+  examples: |
+    - [YOURNAME](name)
+    - [RANDOM_PERSON_NAME](name)
+
+- intent: account_management
+  examples: |
+    - manage account
+    - I would like to manage my account
+
+- intent: change_email
+  examples: |
+    - change email
+    - I would like to change my email address
+
+- intent: change_password
+  examples: |
+    - change password
+    - I would like to change my password
+
+- intent: change_phone_number
+  examples: |
+    - change phone number
+    - I would like to change my phone number
+
+- intent: change_location
+  examples: |
+    - change location
+    - I would like to change my location
+
+- intent: access_password_email_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_password_password_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_password_phone_number_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_password_location_change
+  examples : |
+    - access password
+    - I want to access through my password
+
+- intent: access_secret_question_email_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_secret_question_password_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_secret_question_phone_number_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: access_secret_question_location_change
+  examples: |
+    - access password
+    - I want to access through my password
+
+- intent: frequently_asked_questions
+  examples: |
+    - access faq
+    - I have a question
+    - I want information
+    - questions please
+    - information please
+    - i request information
+
+- intent: query_tariffs_questions
+  examples: |
+    - access tariff questions
+    - tariff questions
+    - I have a question about tariffs
+
+- intent: query_meters_questions
+  examples: |
+    - access meter questions
+    - meter questions
+    - I have a question about meters
+
+- intent: query_bills_questions
+  examples: |
+    - access bill questions
+    - bill questions
+    - I have a question about bills
+
+- intent: query_contact_questions
+  examples: |
+    - access contact questions
+    - contact questions
+    - I have a question about contacts
+
+- intent: query_what_is_a_tariff
+  examples: |
+    - What is a tariff
+    - tariff definition
+    - tariff query
+
+- intent: query_tariff_options
+  examples: |
+    - What tariffs do you offer
+    - tariff offers
+    - What tariffs do you have
+
+- intent: query_what_is_fix_1_year_v14
+  examples: |
+    - What is a fix 1 year v14 tariff
+    - fix 1 year v14 tariff
+    - fix 1 year v14 tariff information
+
+- intent: query_what_is_energyplan_with_smart_pay_as_you_go
+  examples: |
+    - What is an energyplan with smart pay as you go tariff
+    - energyplan with smart pay as you go tariff
+    - energyplan with smart pay as you go tariff information
+
+- intent: query_what_is_e.on_energyplan_with_prepayment
+  examples: |
+    - What is the e.on energyplan with prepayment tariff
+    - e.on energyplan with prepayment tariff
+    - e.on energyplan with smart pay as you go tariff information
+
+- intent: query_e.on_energyplan
+  examples: |
+    - What is the e.on energyplan tariff
+    - e.on energyplan tariff
+    - e.on energyplan tariff information
+
+- intent: query_e.on_energyplan_assist
+  examples: |
+    - What is the e.on energyplan assist
+    - e.on energyplan assist tariff
+    - e.on energyplan assist tariff information
+
+- intent: query_tariff_renewal
+  examples: |
+    - How do I renew my tariff
+    - renew tariff
+    - can i renew my tariff
+
+- intent: query_tariff_prices
+  examples: |
+    - tariff price difference
+    - why are the traiff prices different online to what is seen on my letter
+    - why are the traiff prices different online to what is seen on my email
+
+- intent: query_what_is_a_meter
+  examples: |
+    - what is a meter
+    - meter definition
+    - i want to know about meters
+
+- intent: query_meter_options
+  examples: |
+    - What meters do you offer
+    - meter offers
+    - What meters do you have
+    - offer meters
+    - show me meters
+
+- intent: query_what_are_digital_meters
+  examples: |
+    - What are digital meters
+    - digital meters
+    - digital meters information
+
+- intent: query_what_are_dial_meters
+  examples: |
+    - What are dial meters
+    - dial meters
+    - dial meters information
+
+- intent: query_what_are_mechanical_meters
+  examples: |
+    - What are mechanical meters
+    - mechanical meters
+    - mechanical meters information
+
+- intent: query_what_are_smart_meters
+  examples: |
+    - What are smart meters
+    - smart meters
+    - smart meters information
+
+- intent: query_what_does_a_meter_say
+  examples: |
+    - what does my meter say
+    - meter showing
+    - what does my meter read
+
+- intent: query_trouble_giving_meter_reading
+  examples: |
+    - trouble giving meter reading
+    - why can't i give my meter reading
+    - can't give meter reading
+
+- intent: query_where_is_my_bill
+  examples: |
+    - where is my bill
+    - can't find bill
+    - bill location
+
+- intent: query_bill_is_incorrect
+  examples: |
+    - bill is wrong
+    - bill is incorrect
+    - why is my bill wrong
+
+- intent: query_bill_is_overpaid
+  examples: |
+    - bill is overpaid
+    - overpaid bill
+    - i overpaid my bill
+
+- intent: query_cryptocurrency
+  examples: |
+    - cryptocurrency
+    - cryptocurrency plan
+    - do you plan to add cryptocurrency as a payment method
+
+- intent: query_company_email_address
+  examples: |
+    - company email address
+    - what is your email address
+    - e.on email address
+
+- intent: query_company_phone_number
+  examples: |
+    - company phone number
+    - company mobile number
+    - what is your phone number
+    - what is your mobile number
+    - e.on phone number
+    - e.on mobile number
+
+- intent: test
+  examples: |
+    - Test
+    - This is a test
+
+- intent: request_names
+  examples: |
+    - i want to give you my name
+    - give name
+    - you need to know my name
+    - do you know my name?
+
+# Planned Haystack implementation
+
+# - intent: knowledge_question
+#   examples: |
+#     - Can you look the capital of Norway?
+#     - What is the tallest building in the world?
+#     - Who won the 2018 Champions League?
+#     - Where is Faker from?
+#     - Can you tell me who the Prime Minister of Australia is?
+#     - Why do leaves turn yellow?
+#     - Do you know who stole Christmas?
+#     - When is Easter?
